@@ -7,5 +7,5 @@ export function wussup() {
 }
 
 export function hi() {
-  console.log('haygurl');
+  console.log('haygurll');
 }
