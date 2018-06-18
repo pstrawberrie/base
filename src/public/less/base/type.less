@@ -1,4 +1,6 @@
 /* Fonts */
+@lineHeightDefault: 1.3;
+@lineHeightParagraph: 1.4;
 
 // Declare font classes
 .font-sans {
@@ -20,7 +22,7 @@
 // Font Base Sizing
 html {
   font-size: 100%;
-  line-height: 1.3;
+  line-height: @lineHeightDefault;
 }
 body {
   .font-default;
@@ -28,22 +30,20 @@ body {
 }
 
 // Headers
-h1, h2 { .font-title; }
+h1, h2 {.font-title;}
 
-h1 {font-size:3.5rem; margin-bottom:2rem;}
-h2 {font-size:2rem; margin-bottom:1.5rem;}
-h3 {font-size:1.8rem;}
-h4 {font-size:1.4rem;}
-h5 {font-size:1.25rem;}
+h1 {font-size: 3.5rem; margin-bottom: 2rem;}
+h2 {font-size: 2rem; margin-bottom: 1.5rem;}
+h3 {font-size: 1.8rem;}
+h4 {font-size: 1.4rem;}
+h5 {font-size: 1.25rem;}
 
-h3, h4, h5 {margin-bottom:1rem;}
+h3, h4, h5 {margin-bottom: 1rem;}
 
 // Paragraphs
 p {
-  margin-bottom:1.25rem;
-  line-height:1.4;
+  margin-bottom: 1.25rem;
+  line-height: @lineHeightParagraph;
 
   &.no-margin { margin-bottom: 0; }
 }
-
-// Lists

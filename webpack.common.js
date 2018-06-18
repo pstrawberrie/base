@@ -75,8 +75,8 @@ module.exports = {
   },
 
   // Plugins
-  // - configuring optimizations in environment-specific configs
-  // - defining some environment variables here from 'site' JSON
+  // - configure optimizations in environment-specific configs, not here
+  // - define environment variables here from 'site' JSON
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'app-[hash].css',
@@ -85,11 +85,11 @@ module.exports = {
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       meta: {viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'},
-      title: site.title,
+      title: site.siteName,
       minify: {removeComments: true, collapseWhitespace: true, conservativeCollapse: true}
     }),
     new webpack.DefinePlugin({
-      'process.env.SITENAME': JSON.stringify(site.title),
+      'process.env.SITENAME': JSON.stringify(site.siteName),
       'process.env.CONSOLE_GREETING': JSON.stringify(site.consoleGreeting)
     })
   ]

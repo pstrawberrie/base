@@ -6,5 +6,5 @@
 export function consoleGreet() {
   var greeting = process.env.CONSOLE_GREETING;
   if(greeting === 'disable' || greeting === 'disabled') return;
-  console.log(`%c ${greeting}`, 'background: #222; color: #bada55');
+  console.log(`%c ${greeting} `, 'background: #222; color: #bada55');
 }
