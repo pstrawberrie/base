@@ -11,8 +11,8 @@
     "IE 10"
   ],
   "scripts": {
-    "start": "webpack-dev-server --open --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "start": "webpack-dev-server --open --config webpack.dev.js --progress --colors",
+    "build": "webpack --config webpack.prod.js --progress --colors"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

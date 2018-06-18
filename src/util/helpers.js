@@ -1,11 +1,7 @@
 /**
- * Helpers Util
+ * Helper Utils
  */
 
-export function wussup() {
-  console.log('wussup B^)');
-}
-
-export function hi() {
-  console.log('haygurll');
+export function greet() {
+  console.log(`%c Welcome to ${site.title} 👍 `, 'background: #222; color: #bada55');
 }

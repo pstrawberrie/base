@@ -1,9 +1,11 @@
 /**
- * Production Webpack Config
+ * Shared Webpack Config
  */
 
-const isProd = process.env.NODE_ENV === 'production';
+const site = require('./site.json'); // @TODO: can we use ajax call to grab site info for build?
 const path = require('path');
+//const isProd = process.env.NODE_ENV === 'production'; // Currently unused
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -71,6 +73,8 @@ module.exports = {
     ]
   },
 
+  // Plugins
+  // - configuring optimizations in environment-specific configs
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'app-[hash].css',
@@ -79,6 +83,7 @@ module.exports = {
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       meta: {viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'},
+      title: site.title,
       minify: {removeComments: true, collapseWhitespace: true, conservativeCollapse: true}
     })
   ]

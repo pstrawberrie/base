@@ -2,9 +2,9 @@
  * App Entry
  */
 
-import './public/scss/main.less';
-import { wussup } from './util/helpers';
+import './public/less/main.less';
+import { greet } from './util/helpers';
 
 document.addEventListener('DOMContentLoaded', function() {
-  wussup();
+  greet();
 });
