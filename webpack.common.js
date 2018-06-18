@@ -2,7 +2,7 @@
  * Shared Webpack Config
  */
 
-const site = require('./site.json'); // @TODO: can we use ajax call to grab site info for build?
+const site = require('./data/site.json'); // @TODO: can we use ajax call to grab site info for build?
 const path = require('path');
 //const isProd = process.env.NODE_ENV === 'production'; // Currently unused
 
