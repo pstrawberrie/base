@@ -2,8 +2,9 @@
  * Shared Webpack Config
  */
 
-const site = require('./data/site.json'); // @TODO: can we use ajax call to grab site info for build?
+const site = require('./data/site.json'); // @TODO: option use ajax call to grab site info for build?
 const path = require('path');
+const webpack = require('webpack');
 //const isProd = process.env.NODE_ENV === 'production'; // Currently unused
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -75,6 +76,7 @@ module.exports = {
 
   // Plugins
   // - configuring optimizations in environment-specific configs
+  // - defining some environment variables here from 'site' JSON
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'app-[hash].css',
@@ -85,6 +87,10 @@ module.exports = {
       meta: {viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'},
       title: site.title,
       minify: {removeComments: true, collapseWhitespace: true, conservativeCollapse: true}
+    }),
+    new webpack.DefinePlugin({
+      'process.env.SITENAME': JSON.stringify(site.title),
+      'process.env.CONSOLE_GREETING': JSON.stringify(site.consoleGreeting)
     })
   ]
 
