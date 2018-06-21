@@ -2,13 +2,14 @@
  * Shared Webpack Config
  */
 
-const site = require('./data/site.json'); // @TODO: option use ajax call to grab site info for build?
+const site = require('./data/site.json'); // @TODO: option use ajax call to grab site info for build
 const path = require('path');
 const webpack = require('webpack');
 //const isProd = process.env.NODE_ENV === 'production'; // Currently unused
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
@@ -45,31 +46,6 @@ module.exports = {
           'postcss-loader',
           'less-loader'
         ]
-      },
-      // Images
-      {
-        test: /\.(gif|png|jpe?g|svg)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              name: 'fonts/[name].[ext]'
-            }
-          }
-        ]
-      },
-      // Fonts
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'fonts/[name].[ext]'
-            }
-          }
-        ]
       }
     ]
   },
@@ -84,10 +60,14 @@ module.exports = {
     }),
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      meta: {viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'},
       title: site.siteName,
+      template: 'src/index.html',
       minify: {removeComments: true, collapseWhitespace: true, conservativeCollapse: true}
     }),
+    new CopyWebpackPlugin([
+      { from: './src/public/fonts', to: './fonts' },
+      { from: './src/public/images', to: './images' }
+    ]),
     new webpack.DefinePlugin({
       'process.env.SITENAME': JSON.stringify(site.siteName),
       'process.env.CONSOLE_GREETING': JSON.stringify(site.consoleGreeting)
