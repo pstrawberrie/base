@@ -1,10 +1,10 @@
 # Base
 
-2018 Front-end base
+2018 Front-end Base
 
-### Using
-- less
-- babel
+### Branches
+- [Master](https://github.com/pstrawberrie/base/tree/master)
+- [React](https://github.com/pstrawberrie/base/tree/react)
 
 ### Webpack
 - webpack.common.js / shared config
