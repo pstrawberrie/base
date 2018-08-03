@@ -1,8 +1,8 @@
 /**
  * Shared Webpack Config
  */
+if(process.env.NODE_ENV === undefined) process.env.NODE_ENV = 'development';
 const path = require('path');
-const webpack = require('webpack');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -24,12 +24,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['babel-preset-env']
-          }
-        }
+        use: ['babel-loader']
       },
       // Styles
       {
